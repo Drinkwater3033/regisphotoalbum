@@ -5,7 +5,7 @@ var config = require('./config');
 var mongoose = require('mongoose');
 var app = express();
 
-console.log("port : " + process.env.port),
+//console.log("port : " + process.env.port),
 
 mongoose.connect(config.dbConnectionString, function(err){
     if(err){
@@ -19,9 +19,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.get('*', function(req, res){
+app.get('/', function(req, res){
     res.sendFile(config.sendFile);
 });
+
+app.get('/images', function(req, res){
+    res.sendFile(config.imageFile);
+});
+
 
 app.listen(config.port, function(err){
     if(err) {
@@ -29,4 +34,7 @@ app.listen(config.port, function(err){
         } else {
             console.log("listening on Port " + config.port);
         }
+
+
+    
 });

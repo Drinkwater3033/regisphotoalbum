@@ -3,4 +3,5 @@ module.exports = {
     "port": process.env.PORT || 3000,
     "secretKey" : "MySecretKey",
     "sendFile" : __dirname + "/public/views/index.html",
+    "imageFile" : __dirname + "/images/images.html",
 }
